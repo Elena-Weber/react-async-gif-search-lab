@@ -16,8 +16,8 @@ export default class GifListContainer extends Component {
         )
     }
 
-    fetchImgs = () => {
-        fetch('https://api.giphy.com/v1/gifs/search?q=YOUR%20QUERY%20HERE&api_key=dc6zaTOxFJmzC&rating=g&limit=3')
+    fetchImgs = (query = "dogs") => {
+        fetch('https://api.giphy.com/v1/gifs/search?q=${query}&api_key=dc6zaTOxFJmzC&rating=g&limit=3')
         .then(resp => resp.json())
         .then(({data}) => {
             this.setState({imgs: data.map(img => ({url: img.images.original.url}) )})
